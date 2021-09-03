@@ -1,5 +1,9 @@
 package com.axel.joao.tcc.poo2.services.impl;
 
+/*
+ *Servico responsavel por buscar o pokemon solicitado na API externa
+ * */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

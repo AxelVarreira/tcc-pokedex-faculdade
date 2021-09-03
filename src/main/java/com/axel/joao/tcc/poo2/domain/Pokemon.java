@@ -1,33 +1,30 @@
 package com.axel.joao.tcc.poo2.domain;
 
-import java.util.List;
+/*
+ *  Classe de dominio do Pokemon, onde contem todos os atributos que irao ser criados no banco de dados, alem de ser uma classe normal
+ * */
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name = "pokemon")
+@SequenceGenerator(name = "seq_pokemon", sequenceName = "seq_pokemon", allocationSize = 1)
 public class Pokemon {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pokemon")
+    private Integer id;
 
     @Column(name = "idPokemon")
-    @JsonProperty
     private Integer idPokemon;
 
     @Column(name = "name")
@@ -37,10 +34,7 @@ public class Pokemon {
     private Integer baseExperience;
 
     @Column(name = "currentExperience")
-    private Integer currentExperience = this.baseExperience;
-
-    @Column(name = "order")
-    private Integer order;
+    private Integer currentExperience;
 
     @Column(name = "types")
     private String types;
@@ -51,17 +45,12 @@ public class Pokemon {
     @Column(name = "height")
     private Float height;
 
-    @Column(name = "frontSprite")
-    private String frontSprite;
-
-    @Column(name = "skills")
-    @ElementCollection
-    private List<String> skills;
-
     @Column(name = "apelido")
     private String apelido;
 
+    @Column(name = "vida")
     private Integer vida;
 
+    @Column(name = "ataque")
     private Integer ataque;
 }

@@ -13,7 +13,7 @@ logging:
 spring:
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
   datasource:
     hikari:
       maximum-pool-size: 3

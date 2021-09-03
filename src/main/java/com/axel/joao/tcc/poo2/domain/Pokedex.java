@@ -1,34 +1,29 @@
 package com.axel.joao.tcc.poo2.domain;
 
+/*
+*  Classe de dominio da Pokedex, onde contem todos os atributos que irao ser criados no banco de dados, alem de ser uma classe normal
+* */
+
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "pokedex")
+@SequenceGenerator(name = "seq_pokedex", sequenceName = "seq_pokedex", allocationSize = 1)
 public class Pokedex {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pokedex")
     long idPokedex;
 
     @OneToOne(cascade = CascadeType.ALL)

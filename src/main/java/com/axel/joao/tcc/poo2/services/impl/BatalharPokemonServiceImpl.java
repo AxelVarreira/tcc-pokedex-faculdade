@@ -1,8 +1,13 @@
 package com.axel.joao.tcc.poo2.services.impl;
 
+/*
+* Servico onde a batalha pokemon acontece, pra isso, ele precisa somente do pokemon do usuario
+* */
+
 import java.util.Collections;
 import java.util.List;
 
+import com.axel.joao.tcc.poo2.response.BatalhaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.axel.joao.tcc.poo2.domain.Pokemon;
@@ -14,10 +19,12 @@ import com.axel.joao.tcc.poo2.services.interfaces.BuscarPokemonService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Service
 public class BatalharPokemonServiceImpl implements BatalharPokemonsService {
 
     @Autowired
@@ -26,13 +33,11 @@ public class BatalharPokemonServiceImpl implements BatalharPokemonsService {
     @Autowired
     BuscarPokemonService buscarPokemonService;
 
-    private Integer counter = 0;
-
-    private boolean isVencedor;
+    @Autowired
+    BatalhaResponse resultado;
 
     @Override
-    public Boolean batalhar(Pokemon pokemon) {
-
+    public BatalhaResponse batalhar(Pokemon pokemon) {
         List<SimplePokemon> pokemonList = externalPokemonRepository.pegarTodosPokemons(0, 100);
 
         Collections.shuffle(pokemonList);
@@ -53,9 +58,11 @@ public class BatalharPokemonServiceImpl implements BatalharPokemonsService {
         }
 
         if(pokemon.getVida()>0){
-            isVencedor = true;
+            resultado.setVencedor(true);
         }
 
-        return isVencedor;
+        resultado.setNomeAdversario(pokemonRandomizado.getName());
+
+        return resultado;
     }
 }

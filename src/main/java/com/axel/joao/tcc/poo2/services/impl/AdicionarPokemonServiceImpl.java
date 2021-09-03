@@ -1,5 +1,9 @@
 package com.axel.joao.tcc.poo2.services.impl;
 
+/*
+ * Servico responsavel por salvar o pokemon na pokedex do usuario
+ * */
+
 import java.util.List;
 import java.util.Set;
 

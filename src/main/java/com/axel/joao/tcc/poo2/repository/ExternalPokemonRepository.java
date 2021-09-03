@@ -1,5 +1,9 @@
 package com.axel.joao.tcc.poo2.repository;
 
+/*
+* Se comunica com a API externa atraves do FeignClient
+* */
+
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;

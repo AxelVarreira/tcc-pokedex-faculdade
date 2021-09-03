@@ -1,5 +1,8 @@
 package com.axel.joao.tcc.poo2.repository;
 
+/*
+* Faz a comunicacao com a tabela da Pokedex no banco de dados e utiliza o Spring boot como mediador
+* */
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,6 +14,4 @@ public interface PokedexRepository extends CrudRepository<Pokedex, Integer> {
     <S extends Pokedex> S save(S s);
 
     Pokedex findPokedexByUser(Integer id);
-
-//    void deletePokemonByPokemonListByPokemonByIdPokemon(Integer id);
 }
