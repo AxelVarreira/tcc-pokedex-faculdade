@@ -1,17 +1,28 @@
 package com.axel.joao.tcc.poo2.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "pokedex")
 public class Pokedex {
@@ -20,34 +31,11 @@ public class Pokedex {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     long idPokedex;
 
-    @OneToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private Usuario user;
 
     @Column(name = "pokemonList")
-    private Set<Pokemon> pokemonList = new HashSet<>();
-
-    public long getIdPokedex() {
-        return idPokedex;
-    }
-
-    public void setIdPokedex(final long idPokedex) {
-        this.idPokedex = idPokedex;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(final Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Set<Pokemon> getPokemonList() {
-        return pokemonList;
-    }
-
-    public void setPokemonList(final Set<Pokemon> pokemonList) {
-        this.pokemonList = pokemonList;
-    }
+    @ElementCollection
+    private List<Pokemon> pokemonList;
 }

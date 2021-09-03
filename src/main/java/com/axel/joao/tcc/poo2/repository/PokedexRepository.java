@@ -10,7 +10,7 @@ public interface PokedexRepository extends CrudRepository<Pokedex, Integer> {
     @Override
     <S extends Pokedex> S save(S s);
 
-    Pokedex findPokedexByUserId(Integer id);
+    Pokedex findPokedexByUser(Integer id);
 
-    void deletePokemonByPokemonListByPokemonByIdPokemon(Integer id);
+//    void deletePokemonByPokemonListByPokemonByIdPokemon(Integer id);
 }

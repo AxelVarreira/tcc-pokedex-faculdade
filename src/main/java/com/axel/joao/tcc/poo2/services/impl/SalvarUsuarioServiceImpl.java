@@ -7,15 +7,18 @@ import com.axel.joao.tcc.poo2.domain.Usuario;
 import com.axel.joao.tcc.poo2.repository.UsuarioRepository;
 import com.axel.joao.tcc.poo2.services.interfaces.SalvarUsuarioService;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 @Service
+@Getter
+@Setter
+@AllArgsConstructor
 public class SalvarUsuarioServiceImpl implements SalvarUsuarioService {
 
     @Autowired
     final private UsuarioRepository usuarioRepository;
-
-    public SalvarUsuarioServiceImpl(final UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
 
     @Override
     public void salvar(final Usuario user) {

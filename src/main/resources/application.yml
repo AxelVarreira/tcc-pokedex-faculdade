@@ -1,0 +1,23 @@
+auth-url: https://crescer-api-auth.herokuapp.com/me
+server:
+  port: 8090
+  servlet:
+    context-path: /tcc-poo2
+  error:
+    include-message: always
+    include-binding-errors: always
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  datasource:
+    hikari:
+      maximum-pool-size: 3
+    username: lshkibbeexafkl
+    password: 90ac729f99e63c8d917eeb404b6d27b49a18e7d4aabc09c9f1c48bdaf5ca4f67
+    url: jdbc:postgresql://ec2-54-145-224-156.compute-1.amazonaws.com:5432/del0rbe0n8n3nh?currentSchema=public
+    driver-class-name: org.postgresql.Driver
